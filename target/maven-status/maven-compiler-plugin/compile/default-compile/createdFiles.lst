@@ -1,0 +1,14 @@
+com\example\adoptionanimals\repositories\AnimalRepository.class
+com\example\adoptionanimals\aspects\LoggingAspect.class
+com\example\adoptionanimals\controllers\DemandeAdoptionControllerNew.class
+com\example\adoptionanimals\entities\DemandeAdoption.class
+com\example\adoptionanimals\controllers\UtilisateurControllerNew.class
+com\example\adoptionanimals\repositories\DemandeAdoptionRepository.class
+com\example\adoptionanimals\services\DemandeAdoptionServiceNew.class
+com\example\adoptionanimals\entities\Animal.class
+com\example\adoptionanimals\AdoptionAnimalsApplication.class
+com\example\adoptionanimals\enums\StatutAdoption.class
+com\example\adoptionanimals\services\UtilisateurService.class
+com\example\adoptionanimals\entities\Utilisateur.class
+com\example\adoptionanimals\enums\Etat.class
+com\example\adoptionanimals\repositories\UtilisateurRepository.class
