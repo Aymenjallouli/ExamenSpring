@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -31,6 +31,13 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     List<Animal> findByEtat(Etat etat);
     
     /**
+     * Trouve un animal par nom
+     * @param nom le nom de l'animal
+     * @return l'animal trouvé ou null
+     */
+    Animal findByNom(String nom);
+    
+    /**
      * Trouve tous les animaux par nom (insensible à la casse)
      * @param nom le nom recherché
      * @return la liste des animaux avec ce nom
@@ -45,8 +52,8 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     @Query("SELECT DISTINCT a FROM Animal a " +
            "JOIN a.demandesAdoption da " +
            "WHERE a.etat = :etat " +
-           "AND da.dateDemande > :dateD")
-    List<Animal> findAnimauxParEtatEtDate(@Param("etat") Etat etat, @Param("dateD") LocalDateTime dateD);
+           "AND DATE(da.dateDemande) > :dateD")
+    List<Animal> findAnimauxParEtatEtDate(@Param("etat") Etat etat, @Param("dateD") LocalDate dateD);
     
     /**
      * 6. Vérifier si un animal blessé a une adoption demandée/validée

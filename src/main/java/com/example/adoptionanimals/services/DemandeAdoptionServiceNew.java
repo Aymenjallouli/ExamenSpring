@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service pour la gestion des demandes d'adoption
@@ -131,7 +130,7 @@ public class DemandeAdoptionServiceNew {
         
         try {
             Etat etatEnum = Etat.valueOf(etat.toUpperCase());
-            return animalRepository.findAnimauxParEtatEtDate(etatEnum, dateD.atStartOfDay());
+            return animalRepository.findAnimauxParEtatEtDate(etatEnum, dateD);
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("État invalide: " + etat + ". Valeurs possibles: SAIN, BLESSE");
         }
@@ -146,5 +145,12 @@ public class DemandeAdoptionServiceNew {
         }
         
         return animalRepository.isAnimalAdopte(nomAnimal);
+    }
+    
+    /**
+     * Récupérer toutes les demandes d'adoption
+     */
+    public List<DemandeAdoption> obtenirToutesLesDemandesAdoption() {
+        return demandeAdoptionRepository.findAll();
     }
 }

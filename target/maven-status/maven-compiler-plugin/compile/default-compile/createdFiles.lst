@@ -1,6 +1,5 @@
 com\example\adoptionanimals\repositories\AnimalRepository.class
 com\example\adoptionanimals\aspects\LoggingAspect.class
-com\example\adoptionanimals\controllers\DemandeAdoptionControllerNew.class
 com\example\adoptionanimals\entities\DemandeAdoption.class
 com\example\adoptionanimals\controllers\UtilisateurControllerNew.class
 com\example\adoptionanimals\repositories\DemandeAdoptionRepository.class

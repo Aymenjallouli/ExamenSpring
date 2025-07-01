@@ -62,4 +62,26 @@ public class UtilisateurService {
         
         return utilisateurs;
     }
+    
+    /**
+     * Récupérer tous les utilisateurs
+     */
+    public List<Utilisateur> obtenirTousLesUtilisateurs() {
+        return utilisateurRepository.findAll();
+    }
+    
+    /**
+     * Supprime un utilisateur par son identifiant
+     */
+    public void supprimerUtilisateur(Long id) {
+        if (id == null) {
+            throw new RuntimeException("L'identifiant de l'utilisateur ne peut pas être null");
+        }
+        
+        if (!utilisateurRepository.existsById(id)) {
+            throw new RuntimeException("Aucun utilisateur trouvé avec l'identifiant: " + id);
+        }
+        
+        utilisateurRepository.deleteById(id);
+    }
 }

@@ -35,6 +35,8 @@ public class UtilisateurControllerNew {
         }
     }
     
+
+    
     /**
      * 7. Endpoint pour déclencher manuellement la tâche automatique (pour test)
      */
@@ -43,4 +45,6 @@ public class UtilisateurControllerNew {
         List<Utilisateur> utilisateurs = utilisateurService.trouverUtilisateursAvecAdoptionMultiEtat();
         return ResponseEntity.ok(utilisateurs);
     }
+
+   
 }

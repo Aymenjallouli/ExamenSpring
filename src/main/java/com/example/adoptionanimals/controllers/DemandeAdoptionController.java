@@ -1,16 +1,13 @@
 package com.example.adoptionanimals.controllers;
 
-import com.example.adoptionanimals.entities.Animal;
 import com.example.adoptionanimals.entities.DemandeAdoption;
 import com.example.adoptionanimals.services.DemandeAdoptionServiceNew;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/demandes-adoption")
 @CrossOrigin(origins = "*")
-public class DemandeAdoptionControllerNew {
+public class DemandeAdoptionController {
     
     @Autowired
     private DemandeAdoptionServiceNew demandeAdoptionService;
@@ -28,7 +25,7 @@ public class DemandeAdoptionControllerNew {
     /**
      * 2. Ajouter une demande d'adoption et ses animaux (2 pts)
      */
-    @PostMapping("/ajouter-avec-animaux")
+    @PostMapping(value = "/ajouter-avec-animaux", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> ajouterDemandeAdoptionEtAnimauxAssocies(@Valid @RequestBody DemandeAdoption demandeAdoption) {
         try {
             DemandeAdoption nouvelleDemande = demandeAdoptionService.ajouterDemandeAdoptionEtAnimauxAssocies(demandeAdoption);
@@ -57,32 +54,13 @@ public class DemandeAdoptionControllerNew {
             return new ResponseEntity<>(Map.of("erreur", e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
-    
+
     /**
-     * 4. Rechercher animaux blessés par état et date (2.5 pts)
+     * Récupérer toutes les demandes d'adoption
      */
-    @GetMapping("/animaux-par-etat-date")
-    public ResponseEntity<?> trouverAnimauxParEtatEtDate(
-            @RequestParam String etat,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateD) {
-        try {
-            List<Animal> animaux = demandeAdoptionService.trouverAnimauxParEtatEtDate(etat, dateD);
-            return ResponseEntity.ok(animaux);
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(Map.of("erreur", e.getMessage()), HttpStatus.BAD_REQUEST);
-        }
-    }
-    
-    /**
-     * 6. Vérifier si un animal blessé a une adoption demandée/validée (2.5 pts)
-     */
-    @GetMapping("/animal-adopte")
-    public ResponseEntity<?> animalAdopte(@RequestParam String nomAnimal) {
-        try {
-            Boolean adopte = demandeAdoptionService.animalAdopte(nomAnimal);
-            return ResponseEntity.ok(Map.of("nomAnimal", nomAnimal, "adopte", adopte));
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(Map.of("erreur", e.getMessage()), HttpStatus.BAD_REQUEST);
-        }
+    @GetMapping(produces = "application/json")
+    public ResponseEntity<List<DemandeAdoption>> obtenirToutesLesDemandesAdoption() {
+        List<DemandeAdoption> demandes = demandeAdoptionService.obtenirToutesLesDemandesAdoption();
+        return ResponseEntity.ok(demandes);
     }
 }

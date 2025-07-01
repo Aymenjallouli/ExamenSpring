@@ -5,10 +5,12 @@ C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adopt
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\enums\Etat.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\entities\DemandeAdoption.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\controllers\UtilisateurControllerNew.java
-C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\controllers\DemandeAdoptionControllerNew.java
+C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\controllers\DemandeAdoptionController.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\services\UtilisateurService.java
+C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\services\AnimalService.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\repositories\DemandeAdoptionRepository.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\repositories\AnimalRepository.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\enums\StatutAdoption.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\repositories\UtilisateurRepository.java
+C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\controllers\AnimalController.java
 C:\Users\Aymen Jallouli\Desktop\ExamenSpringboot\src\main\java\com\example\adoptionanimals\AdoptionAnimalsApplication.java

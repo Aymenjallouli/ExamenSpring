@@ -2,6 +2,7 @@ package com.example.adoptionanimals.repositories;
 
 import com.example.adoptionanimals.entities.DemandeAdoption;
 import com.example.adoptionanimals.entities.Utilisateur;
+import com.example.adoptionanimals.entities.Animal;
 import com.example.adoptionanimals.enums.StatutAdoption;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -60,4 +61,9 @@ public interface DemandeAdoptionRepository extends JpaRepository<DemandeAdoption
      */
     @Query("SELECT COUNT(d) FROM DemandeAdoption d WHERE d.statut = :statut")
     long countByStatut(@Param("statut") StatutAdoption statut);
+    
+    /**
+     * Trouve les demandes d'adoption contenant un animal spécifique avec des statuts donnés
+     */
+    List<DemandeAdoption> findByAnimauxContainingAndStatutIn(Animal animal, List<StatutAdoption> statuts);
 }

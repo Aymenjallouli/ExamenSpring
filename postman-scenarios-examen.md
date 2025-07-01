@@ -38,12 +38,12 @@
 
 ---
 
-## 2. Créer des Animaux (Prérequis pour les demandes) aamel creation mtaa animal manuellement fl base de donnné 
+## 2. Créer des Animaux (Prérequis pour les demandes)
 
 ### Méthode: POST
 ### URL: `/api/animaux`
 
-### Animal 1 - Medor (Chien, Etat)
+### Animal 1 - Medor (Chien, Sain)
 ```json
 {
     "nom": "Medor",
@@ -241,15 +241,26 @@ Bienvenue dans le service ajouterUtilisateur
 
 ---
 
-## 8. Tâche automatique (Vérification manuelle)
+## 8. Tâche automatique et utilisateurs multi-adoption (Vérification)
 
 ### La tâche automatique s'exécute tous les 20 secondes chaque mardi
-### Pour vérifier manuellement, vous pouvez créer un endpoint de test:
+### Pour vérifier manuellement les utilisateurs avec multi-adoption:
 
 ### Méthode: GET
-### URL: `/api/utilisateurs/test-tache-automatique`
+### URL: `/api/utilisateurs/utilisateurs-multi-adoption`
 
-**Résultat attendu dans les logs:**
+**Résultat attendu:**
+```json
+[
+    {
+        "id": 1,
+        "nomComplet": "Sara Bahria",
+        "email": "sara.bahria@gmail.com"
+    }
+]
+```
+
+**Résultat attendu dans les logs de la tâche automatique:**
 ```
 === Tâche automatique - Mardi ===
 Utilisateurs avec au moins 2 adoptions contenant des animaux SAINS:
@@ -259,16 +270,16 @@ Total trouvé: 1
 
 ---
 
-## Ordre d'exécution des tests:
+## Ordre d'exécution des tests (selon l'examen):
 
-1. **Créer les utilisateurs** (Tests 1.1, 1.2, 1.3)
-2. **Créer les animaux** (Tous les animaux)
-3. **Créer les demandes d'adoption** (Tests 3.1, 3.2, 3.3)
-4. **Affecter les demandes** (Tests 4.1, 4.2)
-5. **Rechercher les animaux** (Tests 5.1, 5.2)
-6. **Vérifier les adoptions** (Tests 6.1, 6.2, 6.3)
-7. **Tester le logging** (Test 7.1)
-8. **Vérifier la tâche automatique** (Test 8)
+1. **Ajouter les utilisateurs** (Tests 1.1, 1.2, 1.3) - Méthode 1
+2. **Créer les animaux** (Prérequis - utiliser les JSONs ci-dessus)
+3. **Ajouter demandes d'adoption avec animaux** (Tests 3.1, 3.2, 3.3) - Méthode 2
+4. **Affecter demandes à utilisateur** (Tests 4.1, 4.2) - Méthode 3
+5. **Rechercher animaux par état et date** (Tests 5.1, 5.2) - Méthode 4
+6. **Vérifier aspect logging** (Test 7.1) - Méthode 5
+7. **Vérifier animal adopté** (Tests 6.1, 6.2, 6.3) - Méthode 6
+8. **Tester utilisateurs multi-adoption** (Test 8) - Méthode 7
 
 ---
 
@@ -279,12 +290,16 @@ Total trouvé: 1
 ### URL: `/api/utilisateurs`
 
 ### Récupérer toutes les demandes d'adoption
-### Méthode: GET
+### Méthode: GET  
 ### URL: `/api/demandes-adoption`
 
 ### Récupérer tous les animaux
 ### Méthode: GET
 ### URL: `/api/animaux`
+
+### Récupérer utilisateurs avec adoptions multi-état (Méthode 7)
+### Méthode: GET
+### URL: `/api/utilisateurs/utilisateurs-multi-adoption`
 
 ---
 
